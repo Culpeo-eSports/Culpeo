@@ -2,7 +2,8 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:id="@+id/toolbar">
 
 
 
@@ -23,15 +24,29 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:gravity="center"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp"
+            android:textSize="16sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/mDrawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/contentFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ListView
+                android:id="@+id/navList"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:layout_gravity="start"
+                android:background="@android:color/white" />
+
+        </android.support.v4.widget.DrawerLayout>
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>
