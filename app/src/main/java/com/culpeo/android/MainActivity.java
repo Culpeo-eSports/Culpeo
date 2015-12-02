@@ -1,4 +1,5 @@
-package com.example.rconnacher.culpeo;
+package com.culpeo.android;
+
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,6 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.culpeo.android.fragments.MatchesFragment;
+import com.culpeo.android.fragments.NewsFragment;
+import com.culpeo.android.fragments.ScoresFragment;
+
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

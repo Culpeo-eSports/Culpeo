@@ -1,4 +1,4 @@
-package com.example.rconnacher.culpeo;
+package com.culpeo.android;
 
 import org.junit.Test;
 
