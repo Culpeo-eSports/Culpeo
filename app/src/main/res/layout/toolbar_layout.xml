@@ -12,32 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <android.support.v4.widget.DrawerLayout
-            android:id="@+id/mDrawerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@+id/contentFrame"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <ListView
-                android:id="@+id/navList"
-                android:layout_width="240dp"
-                android:layout_height="match_parent"
-                android:choiceMode="singleChoice"
-                android:layout_gravity="start"
-                android:background="@android:color/white" />
-
-        </android.support.v4.widget.DrawerLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:gravity="center"
+            android:gravity="left"
             android:paddingTop="10dp"
             android:textSize="16sp"/>
 
