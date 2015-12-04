@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.culpeo.android.fragments.MatchesFragment;
@@ -48,24 +49,36 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
         navigationOptions = new String[]{"Settings", "Account", "Contact Us", "Privacy Policy"};
 
         setSupportActionBar(toolBar);
+        initDrawer();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        mDrawerToggle.syncState();
+
+    }
+
+    private void initDrawer() {
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolBar, R.string.drawerOpen, R.string.drawerClose) {
 
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
 
-                super.onDrawerClosed(view);
-                getSupportActionBar().setTitle("Settings");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                super.onDrawerClosed(drawerView);
+                invalidateOptionsMenu();
             }
 
-            /** Called when a drawer has settled in a completely open state. */
+            @Override
             public void onDrawerOpened(View drawerView) {
 
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Settings");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                invalidateOptionsMenu();
             }
         };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        navDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navigationOptions));
+        navDrawerList.setOnItemClickListener(this);
     }
 
     @Override
