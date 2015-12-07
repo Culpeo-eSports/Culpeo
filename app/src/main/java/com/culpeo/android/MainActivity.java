@@ -7,46 +7,58 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.culpeo.android.fragments.MatchesFragment;
 import com.culpeo.android.fragments.NewsFragment;
 import com.culpeo.android.fragments.ScoresFragment;
 
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class MainActivity extends AppCompatActivity implements MenuItem.OnActionExpandListener, AdapterView.OnItemClickListener {
 
+    private static final String TAG = "MainActivity";
+
     @InjectView(R.id.toolbar)
     Toolbar toolBar;
     @InjectView(R.id.mDrawerLayout)
     DrawerLayout mDrawerLayout;
+    @InjectView(R.id.manageFragements)
+    LinearLayout manageFragments;
     @InjectView(R.id.navList)
     ListView navDrawerList;
+    @InjectView(R.id.pager)
+    ViewPager mViewPager;
     private SharedPreferences mSharedPreferences;
     private String[] navigationOptions;
     private ActionBarDrawerToggle mDrawerToggle;
-
+    private CustomPagerAdapter mCustomPagerAdapter;
+    private boolean isDrawerOpen = false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.inject(this);
 
         navigationOptions = new String[]{"Settings", "Account", "Contact Us", "Privacy Policy"};
+
+        mCustomPagerAdapter = new CustomPagerAdapter(getSupportFragmentManager(), this);
+        mViewPager.setAdapter(mCustomPagerAdapter);
+
 
         setSupportActionBar(toolBar);
         initDrawer();
@@ -65,13 +77,18 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
 
                 super.onDrawerClosed(drawerView);
                 invalidateOptionsMenu();
+                manageFragments.bringToFront();
+
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
 
                 super.onDrawerOpened(drawerView);
+                mDrawerLayout.bringToFront();
+                mDrawerLayout.invalidate();
                 invalidateOptionsMenu();
+                mDrawerLayout.bringToFront();
             }
         };
 
@@ -83,17 +100,20 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
 
     @Override
     public boolean onMenuItemActionExpand(MenuItem item) {
+        Log.d(TAG, "got hereee");
         return false;
     }
 
     @Override
     public boolean onMenuItemActionCollapse(MenuItem item) {
+        Log.d(TAG, "got hereee");
         return false;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        Log.d(TAG, "got hereee");
     }
 
     class CustomPagerAdapter extends FragmentPagerAdapter {
