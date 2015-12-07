@@ -11,25 +11,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/mDrawerLayout"
-        android:layout_width="150dp"
-        android:layout_height="195dp"
-        android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/contentFrame"
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/mDrawerLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <ListView
-            android:id="@+id/navList"
-            android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:choiceMode="singleChoice"
-            android:layout_gravity="start"
-            android:background="@android:color/white" />
+            android:orientation="vertical">
 
-    </android.support.v4.widget.DrawerLayout>
+            <FrameLayout
+                android:id="@+id/contentFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ListView
+                android:id="@+id/navList"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:layout_gravity="start"
+                android:background="@android:color/white" />
+
+        </android.support.v4.widget.DrawerLayout>
+
+        <include layout="@layout/manage_fragments"/>
+
+
+    </FrameLayout>
 
 </LinearLayout>
