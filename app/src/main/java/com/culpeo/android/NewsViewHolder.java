@@ -2,6 +2,7 @@ package com.culpeo.android;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -17,11 +18,13 @@ public class NewsViewHolder extends RecyclerView.ViewHolder  {
     private static final String TAG = "NewsViewHolder";
 
     @InjectView(R.id.titleText)
-    TextView title;
+    public TextView title;
     @InjectView(R.id.authorText)
-    TextView author;
+    public TextView author;
     @InjectView(R.id.descriptionText)
-    TextView description;
+    public TextView description;
+    @InjectView(R.id.icon)
+    public ImageView icon;
 
     public NewsViewHolder(View itemView) {
         super(itemView);

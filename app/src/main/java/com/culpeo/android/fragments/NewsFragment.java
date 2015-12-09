@@ -2,10 +2,19 @@ package com.culpeo.android.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.culpeo.android.News;
 import com.culpeo.android.R;
+
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
 /**
@@ -22,6 +31,11 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    @InjectView(R.id.gridview)
+    RecyclerView mView;
+    private GridLayoutManager mLayoutManager;
+    private NewsAdapter mNewsAdapter;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -60,7 +74,20 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        View view =  inflater.inflate(R.layout.fragment_news, container, false);
+        ButterKnife.inject(this, view);
+
+        mLayoutManager = new GridLayoutManager(getActivity(), 1);
+        mView.setLayoutManager(mLayoutManager);
+
+        mNewsAdapter = new NewsAdapter(getActivity(), new ArrayList<News>());
+        mNewsAdapter.add(new News("Test TitleLOL", "test authur", "test description", "testText",R.drawable.lol));
+        mNewsAdapter.add(new News("Test TitleHS", "test authur", "test description", "testText",R.drawable.hearthstone));
+        mNewsAdapter.add(new News("Test TitleSC", "test authur", "test description", "testText",R.drawable.starcraft));
+        mNewsAdapter.add(new News("Test Titletest", "test authur", "test description", "testText",R.drawable.lol));
+        mView.setAdapter(mNewsAdapter);
+
+        return view;
     }
 
 
