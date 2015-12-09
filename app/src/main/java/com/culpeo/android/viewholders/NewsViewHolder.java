@@ -1,9 +1,11 @@
-package com.culpeo.android;
+package com.culpeo.android.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.culpeo.android.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

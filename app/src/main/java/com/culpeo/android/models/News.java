@@ -1,4 +1,4 @@
-package com.culpeo.android;
+package com.culpeo.android.models;
 
 import android.widget.ImageView;
 
