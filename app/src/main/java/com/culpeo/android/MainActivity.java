@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
                 super.onDrawerClosed(drawerView);
                 invalidateOptionsMenu();
                 manageFragments.bringToFront();
+                mDrawerLayout.invalidate();
 
             }
 
@@ -85,10 +85,9 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
             public void onDrawerOpened(View drawerView) {
 
                 super.onDrawerOpened(drawerView);
-                mDrawerLayout.bringToFront();
-                mDrawerLayout.invalidate();
                 invalidateOptionsMenu();
                 mDrawerLayout.bringToFront();
+                mDrawerLayout.invalidate();
             }
         };
 
@@ -100,20 +99,16 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
 
     @Override
     public boolean onMenuItemActionExpand(MenuItem item) {
-        Log.d(TAG, "got hereee");
         return false;
     }
 
     @Override
     public boolean onMenuItemActionCollapse(MenuItem item) {
-        Log.d(TAG, "got hereee");
         return false;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        Log.d(TAG, "got hereee");
     }
 
     class CustomPagerAdapter extends FragmentPagerAdapter {
