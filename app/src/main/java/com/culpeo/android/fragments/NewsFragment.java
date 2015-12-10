@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class NewsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    @InjectView(R.id.gridview)
+    @InjectView(R.id.gridview2)
     RecyclerView mView;
     private GridLayoutManager mLayoutManager;
     private NewsAdapter mNewsAdapter;
@@ -78,6 +79,8 @@ public class NewsFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.inject(this, view);
 
+
+
         mLayoutManager = new GridLayoutManager(getActivity(), 1);
         mView.setLayoutManager(mLayoutManager);
 
@@ -90,6 +93,4 @@ public class NewsFragment extends Fragment {
 
         return view;
     }
-
-
 }

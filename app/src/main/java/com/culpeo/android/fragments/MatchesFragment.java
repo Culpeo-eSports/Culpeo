@@ -2,11 +2,23 @@ package com.culpeo.android.fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.culpeo.android.R;
+import com.culpeo.android.adapters.MatchAdapter;
+import com.culpeo.android.adapters.NewsAdapter;
+import com.culpeo.android.models.Match;
+import com.culpeo.android.models.News;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
 /**
@@ -24,6 +36,11 @@ public class MatchesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private GridLayoutManager mLayoutManager;
+    private MatchAdapter mMatchAdapter;
+    @InjectView(R.id.gridview3)
+    RecyclerView mView;
 
     //private OnFragmentInteractionListener mListener;
 
@@ -62,6 +79,18 @@ public class MatchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matches, container, false);
+        View view =  inflater.inflate(R.layout.fragment_matches, container, false);
+        ButterKnife.inject(this, view);
+        mLayoutManager = new GridLayoutManager(getActivity(), 1);
+        mView.setLayoutManager(mLayoutManager);
+
+        mMatchAdapter = new MatchAdapter(getActivity(), new ArrayList<Match>());
+        mMatchAdapter.add(new Match("TSM", "CLG", R.drawable.tsm, R.drawable.tsm, Calendar.getInstance().getTime()));
+       // mMatchAdapter.add(new Match("Test TitleHS", "test authur", "test description", "testText",R.drawable.hearthstone));
+       // mMatchAdapter.add(new Match("Test TitleSC", "test authur", "test description", "testText",R.drawable.starcraft));
+       // mMatchAdapter.add(new Match("Test Title", "test authur", "test description", "testText", R.drawable.lol));
+        mView.setAdapter(mMatchAdapter);
+
+        return view;
     }
 }

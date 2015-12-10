@@ -3,6 +3,7 @@ package com.culpeo.android;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +23,9 @@ import android.widget.ListView;
 import com.culpeo.android.fragments.MatchesFragment;
 import com.culpeo.android.fragments.NewsFragment;
 import com.culpeo.android.fragments.ScoresFragment;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -128,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
             Fragment fragment;
             if (position == 0) {
                 fragment = new ScoresFragment();
-            } else if (position == 1){
+            } else if (position == 1) {
                 fragment = new NewsFragment();
             } else {
                 fragment = new MatchesFragment();
@@ -137,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
             // Attach some data to the fragment
             // that we'll use to populate our fragment layouts
             Bundle args = new Bundle();
-           // args.putString(DetailsFragment.EXTRA_CONTENT_ID, mContentId);
+            // args.putString(DetailsFragment.EXTRA_CONTENT_ID, mContentId);
 
             // Set the arguments on the fragment
             // that will be fetched in the
@@ -158,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
 
             if (position == 0) {
                 return "Scores";
-            } else if (position == 1){
+            } else if (position == 1) {
                 return "News";
             } else {
                 return "Matches";
