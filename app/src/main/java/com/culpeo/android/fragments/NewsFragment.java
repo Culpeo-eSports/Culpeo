@@ -8,8 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.culpeo.android.News;
+import com.culpeo.android.models.News;
 import com.culpeo.android.R;
+import com.culpeo.android.adapters.NewsAdapter;
 
 import java.util.ArrayList;
 
@@ -81,10 +82,10 @@ public class NewsFragment extends Fragment {
         mView.setLayoutManager(mLayoutManager);
 
         mNewsAdapter = new NewsAdapter(getActivity(), new ArrayList<News>());
-        mNewsAdapter.add(new News("Test TitleLOL", "test authur", "test description", "testText",R.drawable.lol));
+        mNewsAdapter.add(new News("TesTitleLOL", "test authur", "test description", "testText",R.drawable.lol));
         mNewsAdapter.add(new News("Test TitleHS", "test authur", "test description", "testText",R.drawable.hearthstone));
         mNewsAdapter.add(new News("Test TitleSC", "test authur", "test description", "testText",R.drawable.starcraft));
-        mNewsAdapter.add(new News("Test Titletest", "test authur", "test description", "testText",R.drawable.lol));
+        mNewsAdapter.add(new News("Test Title", "test authur", "test description", "testText",R.drawable.lol));
         mView.setAdapter(mNewsAdapter);
 
         return view;

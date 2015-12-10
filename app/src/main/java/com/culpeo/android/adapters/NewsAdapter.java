@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.culpeo.android.News;
-import com.culpeo.android.NewsViewHolder;
+import com.culpeo.android.models.News;
+import com.culpeo.android.viewholders.NewsViewHolder;
 import com.culpeo.android.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder>{
     private Context mContext;
     private List<News> mNews;
 
-    NewsAdapter(Context context, List<News> news){
+    public NewsAdapter(Context context, ArrayList<News> news){
         this.mContext = context;
         this.mNews = news;
     }
