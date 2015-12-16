@@ -17,12 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.culpeo.android.fragments.MatchesFragment;
 import com.culpeo.android.fragments.NewsFragment;
 import com.culpeo.android.fragments.ScoresFragment;
+import com.culpeo.android.fragments.ToolbarFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
 
     private static final String TAG = "MainActivity";
 
+    @InjectView(R.id.bottomToolbar)
+    FrameLayout toolbarFragment;
     @InjectView(R.id.toolbar)
     Toolbar toolBar;
     @InjectView(R.id.mDrawerLayout)
@@ -68,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
+
+        ToolbarFragment frag = new ToolbarFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.bottomToolbar,frag).commit();
 
     }
 

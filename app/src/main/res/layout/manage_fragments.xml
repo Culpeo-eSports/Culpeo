@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/manageFragements">
     <android.support.v4.view.ViewPager
@@ -21,9 +22,12 @@
 
     </android.support.v4.view.ViewPager>
 
+
+
     <FrameLayout
-        android:id="@+id/playerFragment"
+        android:id="@+id/bottomToolbar"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
+        android:layout_height="70dp"
         android:background="@color/colorPrimary"/>
+
 </LinearLayout>
