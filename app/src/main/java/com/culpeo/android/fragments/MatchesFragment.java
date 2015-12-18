@@ -86,7 +86,7 @@ public class MatchesFragment extends Fragment {
         mView.setLayoutManager(mLayoutManager);
 
         mMatchAdapter = new MatchAdapter(getActivity(), new ArrayList<Match>());
-        mMatchAdapter.add(new Match("TSM", "CLG", R.drawable.tsm, R.drawable.tsm, Calendar.getInstance().getTime()));
+        mMatchAdapter.add(new Match("TSM", "CLG", R.drawable.tsm, R.drawable.hearthstone, Calendar.getInstance().getTime()));
        // mMatchAdapter.add(new Match("Test TitleHS", "test authur", "test description", "testText",R.drawable.hearthstone));
        // mMatchAdapter.add(new Match("Test TitleSC", "test authur", "test description", "testText",R.drawable.starcraft));
        // mMatchAdapter.add(new Match("Test Title", "test authur", "test description", "testText", R.drawable.lol));

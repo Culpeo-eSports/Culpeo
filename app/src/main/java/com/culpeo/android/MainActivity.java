@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,9 +22,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.culpeo.android.fragments.AccountFragment;
+import com.culpeo.android.fragments.ContactUsFragment;
 import com.culpeo.android.fragments.MatchesFragment;
 import com.culpeo.android.fragments.NewsFragment;
+import com.culpeo.android.fragments.PrivacyPolicyFragment;
 import com.culpeo.android.fragments.ScoresFragment;
+import com.culpeo.android.fragments.SettingsFragment;
 import com.culpeo.android.fragments.ToolbarFragment;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
     private String[] navigationOptions;
     private ActionBarDrawerToggle mDrawerToggle;
     private CustomPagerAdapter mCustomPagerAdapter;
-    private boolean isDrawerOpen = false;
+
 
 
     @Override
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
-        navigationOptions = new String[]{"Settings", "Account", "Contact Us", "Privacy Policy"};
+        navigationOptions = new String[]{"News","Settings", "Account", "Contact Us", "Privacy Policy"};
 
         mCustomPagerAdapter = new CustomPagerAdapter(getSupportFragmentManager(), this);
         mViewPager.setAdapter(mCustomPagerAdapter);
@@ -120,6 +125,32 @@ public class MainActivity extends AppCompatActivity implements MenuItem.OnAction
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Log.d(TAG, "Click request to: "+ navigationOptions[position]);
+        selectItem(position);
+    }
+
+    public void selectItem(int i) {
+
+        Fragment frag;
+        if (i == 0) { //news
+            //DEFAULT
+        } else if (i == 1) { //settings
+            frag = SettingsFragment.newInstance("","");
+        } else if (i == 2) { //account
+            frag = AccountFragment.newInstance("","");
+        } else if (i == 3) { //contact us
+            frag = ContactUsFragment.newInstance("", "");
+        } else if (i == 4) { //privacy policy
+            frag = PrivacyPolicyFragment.newInstance("","");
+        }
+
+        if(i != 0) {
+            //replace fragment
+        }
+
+        navDrawerList.setItemChecked(i, true);
+        mDrawerLayout.closeDrawer(navDrawerList);
     }
 
     class CustomPagerAdapter extends FragmentPagerAdapter {
